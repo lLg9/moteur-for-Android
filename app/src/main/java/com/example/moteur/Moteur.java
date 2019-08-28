@@ -1,8 +1,6 @@
 package com.example.moteur;
 
-import android.os.Environment;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -43,7 +41,6 @@ public class Moteur implements iMoteur {
         loadPracticeList();
         this.remaining = wPracticeList.size();
     }
-
 
     //public methods
 
