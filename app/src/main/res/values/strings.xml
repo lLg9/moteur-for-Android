@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Moteur on Android</string>
+    <string name="app_name">moteur</string>
 
     <string-array name="pack_nums">
         <item>"1"</item>
