@@ -4,18 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#D4E6B5"
     tools:context=".ChoosePackageActivity">
-
-    <TextView
-        android:id="@+id/t_moteur2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="17dp"
-        android:layout_marginRight="17dp"
-        android:layout_marginBottom="16dp"
-        android:text="moteur on Andorid"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/t_sel_mode"
@@ -31,11 +21,15 @@
 
     <RadioGroup
         android:id="@+id/rg_mode"
-        android:layout_width="241dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/t_sel_num"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/t_sel_mode"
         app:layout_constraintTop_toBottomOf="@+id/t_sel_mode">
 
@@ -75,11 +69,15 @@
 
     <RadioGroup
         android:id="@+id/rg_num"
-        android:layout_width="241dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/t_sel_pac"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/t_sel_num"
         app:layout_constraintTop_toBottomOf="@+id/t_sel_num">
 
@@ -93,14 +91,14 @@
 
         <RadioButton
             android:id="@+id/rb_60"
-            android:layout_width="63dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="60" />
 
         <RadioButton
             android:id="@+id/rb_pm"
-            android:layout_width="63dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="PM" />
@@ -134,15 +132,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/t_sel_pac" />
 
+    <TextView
+        android:id="@+id/t_moteur2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="17dp"
+        android:layout_marginRight="17dp"
+        android:layout_marginBottom="16dp"
+        android:text="moteur on Andorid"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <Button
         android:id="@+id/b_play"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="136dp"
+        android:background="@color/colorPrimary"
         android:onClick="onPlayClicked"
         android:text="go"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

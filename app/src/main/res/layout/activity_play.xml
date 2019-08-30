@@ -4,7 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#D4E6B5"
     tools:context=".PlayActivity">
+
+    <Button
+        android:id="@+id/b_no"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:background="@color/colorPrimary"
+        android:onClick="onNoClicked"
+        android:text="0"
+        android:visibility="invisible"
+        app:layout_constraintBaseline_toBaselineOf="@+id/b_show"
+        app:layout_constraintEnd_toStartOf="@+id/b_show"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/b_show"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="136dp"
+        android:background="@color/colorPrimary"
+        android:onClick="onShowClicked"
+        android:text="8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/b_yes"
+        app:layout_constraintStart_toEndOf="@+id/b_no" />
+
+    <Button
+        android:id="@+id/b_yes"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="17dp"
+        android:layout_marginRight="17dp"
+        android:background="@color/colorPrimary"
+        android:onClick="onYesClicked"
+        android:text="1"
+        android:visibility="invisible"
+        app:layout_constraintBaseline_toBaselineOf="@+id/b_show"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/b_show" />
 
     <TextView
         android:id="@+id/t_word"
@@ -16,6 +61,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:text="WORD"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,6 +77,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:text="---"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,48 +93,11 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:text="---"
+        android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/t_translation" />
-
-    <Button
-        android:id="@+id/b_no"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:onClick="onNoClicked"
-        android:text="0"
-        android:visibility="invisible"
-        app:layout_constraintBaseline_toBaselineOf="@+id/b_show"
-        app:layout_constraintEnd_toStartOf="@+id/b_show"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/b_show"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="136dp"
-        android:onClick="onShowClicked"
-        android:text="8"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/b_yes"
-        app:layout_constraintStart_toEndOf="@+id/b_no" />
-
-    <Button
-        android:id="@+id/b_yes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="17dp"
-        android:layout_marginRight="17dp"
-        android:onClick="onYesClicked"
-        android:text="1"
-        android:visibility="invisible"
-        app:layout_constraintBaseline_toBaselineOf="@+id/b_show"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/b_show" />
 
     <TextView
         android:id="@+id/t_rem"
