@@ -14,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.moteur.Moteur;
-import com.example.moteur.MoteurMock;
 
 
 import com.example.moteur.WordStruct;
@@ -33,6 +32,8 @@ public class PlayActivity extends AppCompatActivity {
     public static final int MODE_TRANSL = 2;
     public static final int NUM_TWENTY = 20;
     public static final int NUM_ALL = 60;
+    public static final int NUM_PM = 8;
+
 
     public static final int MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 777;
 

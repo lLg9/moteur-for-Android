@@ -46,6 +46,9 @@ public class ChoosePackageActivity extends AppCompatActivity {
             case R.id.rb_60:
                 intent.putExtra(PlayActivity.__NUM__, PlayActivity.NUM_ALL);
                 break;
+            case R.id.rb_pm:
+                intent.putExtra(PlayActivity.__NUM__, PlayActivity.NUM_PM);
+                break;
         }
 
         startActivity(intent);

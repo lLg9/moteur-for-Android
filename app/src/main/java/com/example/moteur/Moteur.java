@@ -119,8 +119,11 @@ public class Moteur implements iMoteur {
         if (NUM_LOAD==20){
             load20();
         }
-        else{
+        else if (NUM_LOAD==60){
             loadAll();
+        }
+        else if (NUM_LOAD==8){
+            loadPoorMedium();
         }
     }
 
@@ -159,6 +162,17 @@ public class Moteur implements iMoteur {
         for (int i : wRanks.good)
             wPracticeList.add(i);
         wRanks.good.clear();
+        wRanks.medium.clear();
+        wRanks.poor.clear();
+        Collections.shuffle(wPracticeList);
+    }
+
+    private void loadPoorMedium(){
+        wPracticeList = new LinkedList<>();
+        for (int i : wRanks.poor)
+            wPracticeList.add(i);
+        for (int i : wRanks.medium)
+            wPracticeList.add(i);
         wRanks.medium.clear();
         wRanks.poor.clear();
         Collections.shuffle(wPracticeList);
