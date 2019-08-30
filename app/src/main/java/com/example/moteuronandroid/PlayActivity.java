@@ -62,7 +62,7 @@ public class PlayActivity extends AppCompatActivity {
         mode = getIntent().getIntExtra(__MODE__, MODE_RANDOM);
         num = getIntent().getIntExtra(__NUM__, NUM_TWENTY);
 
-        path = Environment.getExternalStorageDirectory() + File.separator + "__moteur__" + File.separator + "Deutsch" + File.separator + pack;
+        path = Environment.getExternalStorageDirectory() + File.separator + "MOTEUR_CONTENTS" + File.separator + "Deutsch" + File.separator + pack;
         //this line is to be changed only, to change the implementation of Moteur
         moteur = new Moteur(path, pack, num);
 
