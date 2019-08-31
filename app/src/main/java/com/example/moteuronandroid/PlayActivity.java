@@ -5,7 +5,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
@@ -43,11 +45,12 @@ public class PlayActivity extends AppCompatActivity {
     private int num;
 
     private WordStruct ws;
-    iMoteur moteur;
+    private iMoteur moteur;
 
     Button b_show;
     Button b_no;
     Button b_yes;
+    Button b_recap;
     TextView t_rem;
     TextView t_word;
     TextView t_transl;
@@ -71,14 +74,14 @@ public class PlayActivity extends AppCompatActivity {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
             // Permission is not granted
-            Toast.makeText(this, "no permission", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "no rw permission", Toast.LENGTH_SHORT).show();
 
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
                     MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
         }
         else {
-            Toast.makeText(this, "has permission", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "has rw permission", Toast.LENGTH_SHORT).show();
         }
 
         ws = moteur.getNext();
@@ -86,6 +89,7 @@ public class PlayActivity extends AppCompatActivity {
         b_show = (Button) findViewById(R.id.b_show);
         b_no = (Button) findViewById(R.id.b_no);
         b_yes = (Button) findViewById(R.id.b_yes);
+        b_recap = (Button) findViewById(R.id.b_recap);
         t_rem = (TextView) findViewById(R.id.t_rem);
         t_word = (TextView) findViewById(R.id.t_word);
         t_transl = (TextView) findViewById(R.id.t_translation);
@@ -114,7 +118,7 @@ public class PlayActivity extends AppCompatActivity {
         b_no.setVisibility(View.VISIBLE);
         b_yes.setVisibility(View.VISIBLE);
 
-        switch (mode){
+        switch (mode) {
             case MODE_WORD:
                 t_transl.setText(ws.transl);
                 break;
@@ -124,8 +128,7 @@ public class PlayActivity extends AppCompatActivity {
             default:
                 if (ws.remain % 6 < 3) {
                     t_transl.setText(ws.transl);
-                }
-                else {
+                } else {
                     t_transl.setText(ws.word);
                 }
         }
@@ -142,37 +145,54 @@ public class PlayActivity extends AppCompatActivity {
         loadNextWord();
     }
 
+    public void onRecapClicked(View view){
+        Intent intent = new Intent(this, RecapMissedActivity.class);
+        intent.putExtra(RecapMissedActivity.__MISSED__, moteur.recapMissed());
+        startActivity(intent);
+    }
+
+
+
+    //private methods
+
     private void loadNextWord(){
-
-
-
-        b_show.setVisibility(View.VISIBLE);
-        b_no.setVisibility(View.INVISIBLE);
-        b_yes.setVisibility(View.INVISIBLE);
 
         ws = moteur.getNext();
 
-        t_rem.setText(Integer.toString(ws.remain));
+        if (ws.remain != 888) {
+            b_show.setVisibility(View.VISIBLE);
+            b_no.setVisibility(View.INVISIBLE);
+            b_yes.setVisibility(View.INVISIBLE);
 
-        switch (mode){
-            case MODE_WORD:
-                t_word.setText(ws.word);
-                t_transl.setText("---");
-                break;
-            case MODE_TRANSL:
-                t_word.setText(ws.transl);
-                t_transl.setText("---");
-                break;
-            default:
-                if (ws.remain % 6 < 3) {
+
+            t_rem.setText(Integer.toString(ws.remain));
+
+            switch (mode) {
+                case MODE_WORD:
                     t_word.setText(ws.word);
-                    t_transl.setText("---");
-                }
-                else {
+                    break;
+                case MODE_TRANSL:
                     t_word.setText(ws.transl);
-                    t_transl.setText("---");
-                }
+                    break;
+                default:
+                    if (ws.remain % 6 < 3) {
+                        t_word.setText(ws.word);
+                    } else {
+                        t_word.setText(ws.transl);
+                    }
+            }
+            t_transl.setText("---");
+            t_example.setText("---");
         }
-        t_example.setText("---");
+        else{
+            b_no.setVisibility(View.INVISIBLE);
+            b_yes.setVisibility(View.INVISIBLE);
+            b_recap.setVisibility(View.VISIBLE);
+            t_rem.setText("ranks:");
+            t_word.setText(ws.word);
+            t_transl.setText(ws.transl);
+            t_example.setText(ws.example);
+            t_example.setTypeface(null, Typeface.BOLD);
+        }
     }
 }

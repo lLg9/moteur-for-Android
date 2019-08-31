@@ -58,7 +58,7 @@ public class MoteurMock implements iMoteur {
     }
 
     @Override
-    public ArrayList<WordStruct> recapMissed() {
+    public String recapMissed() {
         return null;
     }
 }

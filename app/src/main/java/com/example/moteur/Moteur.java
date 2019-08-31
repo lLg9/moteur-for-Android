@@ -23,7 +23,7 @@ public class Moteur implements iMoteur {
     private WordRanks wRanks;
 
     private LinkedList<Integer> wPracticeList;
-    //private LinkedList<Integer> wMissedList;
+    private String wMissedString = "";
 
 
     //constructor
@@ -92,6 +92,19 @@ public class Moteur implements iMoteur {
         //TBD: add missed ones to wMmissedList
         if (remaining >= 0 && waitingForAnswer) {
             int current = wPracticeList.removeFirst();
+
+            if (!succ){
+                WordStruct ws = new WordStruct();
+                ws.word = wDataArray.get(current).word;
+                ws.transl = wDataArray.get(current).transl;
+                ws.example = wDataArray.get(current).example;
+                wMissedString +=
+                                "w: " + ws.word + "\n" +
+                                "t: " + ws.transl + "\n" +
+                                "e: " + ws.example + "\n" +
+                                "----------\n";
+            }
+
             int newrank = wDataArray.get(current).updateRank(succ);
 
             if ((newrank <= 6 && !wDataArray.get(current).last3Q() && !wDataArray.get(current).last5Q()) || !wDataArray.get(current).lastQ()) {
@@ -109,8 +122,13 @@ public class Moteur implements iMoteur {
     }
 
     @Override
-    public ArrayList<WordStruct> recapMissed() {
-        return null;
+    public String recapMissed() {
+        if (remaining == 0){
+            return wMissedString;
+        }
+        else{
+            return "ERR: recapMissed() called before session end";
+        }
     }
 
     //private methods
