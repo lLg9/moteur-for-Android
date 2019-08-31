@@ -50,9 +50,9 @@ public class Moteur implements iMoteur {
 
         if (remaining > 0 && !waitingForAnswer){
             ws.remain = remaining;
-            ws.word = wDataArray.get(wPracticeList.get(0)).word;
-            ws.transl = wDataArray.get(wPracticeList.get(0)).transl;
-            ws.example = wDataArray.get(wPracticeList.get(0)).example;
+            ws.word = wDataArray.get(wPracticeList.get(0)).word.trim();
+            ws.transl = wDataArray.get(wPracticeList.get(0)).transl.trim();
+            ws.example = wDataArray.get(wPracticeList.get(0)).example.trim();
 
             remaining--;
             waitingForAnswer = true;
