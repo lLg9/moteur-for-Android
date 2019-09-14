@@ -148,21 +148,16 @@ public class Moteur implements iMoteur {
     private void load20(){
         wPracticeList = new LinkedList<>();
         int counter = 20;
-
-        for (int i = 0; i < 12; i++){
-            if (wRanks.poor.size() != 0){
-                wPracticeList.add(wRanks.poor.removeFirst());
-                counter--;
-            }
-            else break;
+        while(wRanks.poor.size() != 0 && counter > 0){
+            wPracticeList.add(wRanks.poor.removeFirst());
+            counter--;
         }
-        for (int i = 0; i < 6; i++){
-            if (wRanks.medium.size() != 0){
-                wPracticeList.add(wRanks.medium.removeFirst());
-                counter--;
-            }
-            else break;
+        counter = Math.min((int)(20 - wPracticeList.size()), 8);
+        while(wRanks.medium.size() != 0 && counter > 0){
+            wPracticeList.add(wRanks.medium.removeFirst());
+            counter--;
         }
+        counter = Math.min((int)(20 - wPracticeList.size()), 2);
         while (counter != 0 && wRanks.good.size() != 0){
             wPracticeList.add(wRanks.good.removeFirst());
             counter--;
